@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "websiteUrl": "https://peekly.app",
   "repository": {
-    "url": "https://github.com/mounir213213/peekly-mcp",
+    "url": "https://github.com/peekly-app/peekly-mcp",
     "source": "github"
   },
   "remotes": [
