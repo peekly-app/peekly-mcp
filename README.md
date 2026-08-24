@@ -89,8 +89,13 @@ the result.
 | Skill | For |
 |---|---|
 | [find-app-ideas](./skills/find-app-ideas) | Finding a proven concept worth building |
-| [analyze-paywalls](./skills/analyze-paywalls) | Designing pricing from what already works |
+| [niche-verdict](./skills/niche-verdict) | Deciding go or no-go, and saying it plainly |
+| [analyze-paywalls](./skills/analyze-paywalls) | Reading the screens that convert |
+| [pricing-from-paywalls](./skills/pricing-from-paywalls) | Setting your price from what the niche charges |
 | [ad-intelligence](./skills/ad-intelligence) | Reading a competitor's paid acquisition |
+| [creative-brief](./skills/creative-brief) | Turning winning ads into a brief you can shoot |
+| [competitor-watch](./skills/competitor-watch) | Reporting what changed, not what is |
+| [launch-window](./skills/launch-window) | Planning a launch against what actually happened |
 | [keyword-research](./skills/keyword-research) | Picking App Store keywords you can win |
 
 To use one in Claude Code, drop the folder into `.claude/skills/` in your project.
