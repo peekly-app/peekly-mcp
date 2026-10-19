@@ -3,8 +3,9 @@
 Ask your AI assistant which mobile apps are actually making money, and why.
 
 Peekly tracks the App Store and Google Play every day: chart positions, estimated
-revenue and downloads, the ad creatives apps are running, the paywall screens they
-use to charge, and App Store keyword difficulty. This connector puts all of it inside
+revenue and downloads, the ad creatives apps are running, the paywall and onboarding
+screens they use to convert, the TikTok, Reels and Shorts videos that talk about them,
+their store reviews and App Store keywords. This connector puts all of it inside
 Claude, ChatGPT, Cursor or any MCP client, so you never leave your editor to research
 a market.
 
@@ -13,7 +14,7 @@ a market.
  and tell me what they all have in common"
 ```
 
-That question costs four tool calls and comes back with real numbers and the actual
+That question costs a few tool calls and comes back with real numbers and the actual
 screens, not a summary of a blog post.
 
 ## Connect
@@ -28,45 +29,146 @@ You sign in with your Peekly account. There is no key to copy and paste: the cli
 discovers the authorization endpoint on its own, opens peekly.app in your browser,
 and you click Authorize.
 
-**Claude** — Settings → Connectors → Add custom connector → paste the URL.
+**Claude**: Settings, Connectors, Add custom connector, then paste the URL.
 
-**ChatGPT** — Settings → Apps → Advanced settings → enable Developer mode → Add
-custom connector → paste the URL.
+**ChatGPT**: Settings, Apps, Advanced settings, enable Developer mode, Add custom
+connector, then paste the URL.
 
 **Claude Code**
 
 ```bash
-claude mcp add peekly --transport http https://peekly.app/api/v1/mcp
+claude mcp add --transport http peekly https://peekly.app/api/v1/mcp
 ```
 
-**Cursor** — Settings → MCP → Add server, same URL.
+Then run `/mcp` inside Claude Code and choose peekly to sign in.
+
+**Codex**
+
+```bash
+codex mcp add peekly --url https://peekly.app/api/v1/mcp
+codex mcp login peekly
+```
+
+**Cursor**: Settings, MCP, Add server, same URL.
 
 An active Peekly subscription is required. [Start here](https://peekly.app/pricing).
 
+## What you see
+
+In clients that support MCP Apps (Claude, ChatGPT), answers come with **cards**: an app
+profile with its screenshots and revenue, charts, rankings, ad creatives, paywall and
+onboarding screens, videos, creators and studios. Other clients receive the same data
+as text.
+
+Paywall screens, onboarding screens and video thumbnails are also attached as **real
+images**, so the assistant can read what is on them: the price, the promise, the
+layout. That is the difference between "here are seven links" and "here is how their
+pricing screen changed between 2024 and 2026".
+
 ## Tools
 
-Thirteen tools, all read-only. Nothing you ask can modify anything.
+47 tools. They read Peekly data and never change anything in your account. One
+exception: give `get_app` a store link for an app Peekly does not track yet, and it
+returns the public store profile and registers the app for analysis.
 
-| Tool | What it answers |
-|---|---|
-| `search_apps` | Which apps match this niche, revenue level or rating |
-| `get_app` | Everything about one app, plus similar ones |
-| `get_app_metrics_history` | How its revenue, downloads and ratings moved |
-| `get_app_chart_history` | Where it ranked, day by day, per country and chart |
-| `list_rankings` | Today's Top Free, Top Paid and Top Grossing |
-| `search_ads` | Which apps are running ads, and for how long |
-| `get_app_ads` | Every creative one app is running, with its stats |
-| `search_paywalls` | How apps in a niche ask for money |
-| `get_app_paywalls` | Every paywall screen captured for one app, over time |
-| `list_organic_content` | Short-form videos about an app, and the creators behind them |
-| `get_keyword_difficulty` | Popularity, difficulty and who ranks for a keyword |
-| `list_publishers` | Which studios earn the most |
-| `get_supported_countries` | Which countries have chart data |
+### Apps and charts
 
-Paywall screens and ad creatives come back as **real images** attached to the reply,
-so the assistant can read what is on them: the price, the promise, the layout. That
-is the difference between "here are seven links" and "here is what changed in their
-pricing between 2024 and 2026".
+| Tool | What it answers | Cost |
+|---|---|---|
+| `search_apps` | Search and filter apps by niche, revenue, downloads, rating and marketing signals | 1 credit / app |
+| `get_app` | The full profile of one app, even one Peekly doesn't track yet, from its store link | 1 credit |
+| `get_app_metrics` | Its key figures, records and how it ranks against its category | 1 credit |
+| `get_app_history` | Revenue, downloads, reviews and rank, day by day | 1 credit / day |
+| `get_app_events` | Updates, price changes and other events for the app | 1 credit / event |
+| `get_app_rankings` | Its position day by day, per country and per chart | 1 credit / day |
+| `list_rankings` | Today's Top Free, Top Paid and Top Grossing, per country and category | 1 credit / app |
+| `compare_apps` | Up to three apps side by side, curves included | 1 credit / point |
+| `get_similar_apps` | The apps competing on the same ground | 1 credit / app |
+| `get_app_reviews` | Recent store reviews, filterable by stars and country | 1 credit / review |
+
+### Studios
+
+| Tool | What it answers | Cost |
+|---|---|---|
+| `list_publishers` | Studios ranked by estimated revenue | 1 credit / studio |
+| `get_publisher` | One studio's profile and its best apps | 1 credit |
+| `list_publisher_apps` | Every app from one studio | 1 credit / app |
+| `get_publisher_history` | A studio's recent trajectory | 1 credit / day |
+
+### Ads
+
+| Tool | What it answers | Cost |
+|---|---|---|
+| `search_ads` | The Meta creatives running now, with how long each has been live | 1 credit / ad |
+| `get_app_ads` | Every ad from one app, newest first | 1 credit / ad |
+| `get_ad` | One ad in detail: copy, dates, countries, media | 1 credit |
+| `get_app_ad_metrics` | Active ad count and estimated spend over time | 1 credit / day |
+| `get_app_ad_countries` | The countries and languages its ads run in | 1 credit / country |
+
+### Paywalls and onboardings
+
+| Tool | What it answers | Cost |
+|---|---|---|
+| `search_paywalls` | How apps in a niche ask for money, screens included | 1 credit / screen |
+| `get_app_paywalls` | Every paywall captured for one app | 1 credit / screen |
+| `search_onboardings` | The onboarding journeys of apps that convert | 1 credit / journey |
+| `get_app_onboarding` | One app's onboarding, screen by screen | 1 credit / screen |
+| `get_onboarding` | One specific journey, with its video and chapters | 1 credit / screen |
+
+### Videos and creators
+
+| Tool | What it answers | Cost |
+|---|---|---|
+| `list_organic_content` | The TikTok, Reels and Shorts videos about an app | 1 credit / video |
+| `get_organic_video` | One video in detail and the apps it features | 1 credit |
+| `search_creators` | The creators talking about apps, with their audience | 1 credit / creator |
+| `get_creator` | One creator's profile | 1 credit |
+| `list_creator_videos` | One creator's videos | 1 credit / video |
+| `get_feed` | The feed of ads and videos that work | 1 credit / video |
+
+### Keywords
+
+| Tool | What it answers | Cost |
+|---|---|---|
+| `get_keyword_difficulty` | Popularity, difficulty, related keywords and who ranks | 10 credits |
+| `get_keyword_rankings` | The apps ranking for a keyword | 1 credit / app |
+| `get_keyword_history` | How a keyword's ranking has moved | 1 credit / point |
+| `list_related_keywords` | Nearby keywords worth exploring | 1 credit / keyword |
+| `get_app_keywords` | The keywords an app ranks for | 1 credit / keyword |
+
+### Reports
+
+| Tool | What it answers | Cost |
+|---|---|---|
+| `list_reports` | The reports available | free |
+| `get_report` | One public report: top earners, growth, categories | 1 credit / row |
+
+### Your account
+
+| Tool | What it answers | Cost |
+|---|---|---|
+| `get_account` | Your account and subscription | free |
+| `get_usage` | Your remaining credits this month | free |
+| `list_tracked_apps` | The apps you track | 1 credit / app |
+| `get_tracker_events` | What changed on the apps you track | 1 credit / event |
+| `list_favorite_folders` | Your favorite folders | 1 credit / folder |
+| `list_favorites` | Your favorites: apps, ads, paywalls, videos, keywords | 1 credit / favorite |
+| `get_notifications` | Your latest notifications | 1 credit / notification |
+| `get_notification_preferences` | Your notification settings | 1 credit / setting |
+
+### Reference
+
+| Tool | What it answers | Cost |
+|---|---|---|
+| `get_supported_countries` | The countries available | free |
+| `get_supported_filters` | The categories, stores and filters available | free |
+
+## Prompts
+
+The server also ships six ready-made prompts, which appear in clients that support
+them: find an app idea, niche verdict, competitor analysis, ad analysis, growth report
+and review analysis. Opening a prompt costs nothing; the tools it then calls cost
+their usual credits.
 
 ## Credits
 
@@ -76,7 +178,7 @@ you need, and narrow your filters.
 
 A Pro subscription includes 10,000 credits a month. Every reply tells you what the
 call cost and what is left. `get_keyword_difficulty` costs 10 credits per keyword,
-more than the rest, because that data is bought from an external provider.
+more than the rest. Account and reference tools are free.
 
 Requests are capped at 60 per minute.
 
@@ -97,6 +199,8 @@ the result.
 | [competitor-watch](./skills/competitor-watch) | Reporting what changed, not what is |
 | [launch-window](./skills/launch-window) | Planning a launch against what actually happened |
 | [keyword-research](./skills/keyword-research) | Picking App Store keywords you can win |
+| [metadata-optimization](./skills/metadata-optimization) | Writing three store title, subtitle and keyword sets |
+| [review-analysis](./skills/review-analysis) | Turning store reviews into complaints, requests and priorities |
 
 To use one in Claude Code, drop the folder into `.claude/skills/` in your project.
 
@@ -109,13 +213,14 @@ prices, release and update dates.
 
 Estimates are useful for orders of magnitude and for comparing apps against each
 other. They are not accounting. Treat "$400k a month" as "this is a big business",
-not as a number you would put in a spreadsheet.
+not as a number you would put in a spreadsheet. A value shown as "< $5k" means below
+$5,000 a month, not zero.
 
 ## Links
 
 - [peekly.app](https://peekly.app)
 - [Pricing](https://peekly.app/pricing)
-- [Methodology](https://peekly.app/methodology) — how the estimates are built
+- [Methodology](https://peekly.app/methodology): how the estimates are built
 - [Privacy](https://peekly.app/privacy)
 - Support: hello@peekly.app
 

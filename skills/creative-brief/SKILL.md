@@ -3,14 +3,17 @@ name: creative-brief
 description: Turn the ads that are already winning into a brief your designer or your video editor can shoot tomorrow. Use when someone needs to produce creatives, not just study them.
 ---
 
+Use the Peekly MCP at `https://peekly.app/api/v1/mcp`. Read `tools/list` before using
+the examples: respect its current parameter schema and cost. Keep calls bounded, read `_credits`, and stop on an access or quota refusal.
+
 # From what works to what to shoot
 
 Analysing ads is the easy part. This skill ends with something a person can actually
 produce: a brief, with a hook written out, a format, a length, and a shot list.
 
 The raw material is public and free to read: **how long a creative has been running**.
-Nobody keeps paying to run an ad that loses money, so a creative live for two hundred days
-is a creative that works.
+Longevity is not proof of profit or conversion. Use it to choose examples to inspect,
+not to label them proven winners.
 
 ## Work in this order
 

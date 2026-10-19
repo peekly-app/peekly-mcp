@@ -3,6 +3,9 @@ name: find-app-ideas
 description: Find a proven app concept worth building, using Peekly's revenue estimates and chart movements. Use when someone asks what to build, which niche is growing, or whether an idea already makes money.
 ---
 
+Use the Peekly MCP at `https://peekly.app/api/v1/mcp`. Read `tools/list` before using
+the examples: respect its current parameter schema and cost. Keep calls bounded, read `_credits`, and stop on an access or quota refusal.
+
 # Finding an app idea that already prints
 
 The point is not to find an original idea. It is to find a concept **someone is
@@ -27,7 +30,7 @@ distribution deal you cannot replicate.
 list_rankings(country: "us", chart: "grossing", category: "<slug>")
 ```
 
-Then `get_app_chart_history` on two or three names. An app climbing from #340 to #40
+Then `get_app_rankings` on two or three names. An app climbing from #340 to #40
 in six weeks says the demand is moving now. A stable top ten says the market is
 settled and you would be fighting for scraps.
 
@@ -49,8 +52,8 @@ get_app(app_id: "<id>")
 ```
 
 Look at revenue against downloads. High downloads and low revenue means a niche that
-does not pay, however popular it looks. The inverse — modest downloads, strong
-revenue — is where a small team can live comfortably.
+does not pay, however popular it looks. The inverse, modest downloads with strong
+revenue, is where a small team can live comfortably.
 
 ## What to report
 
@@ -66,5 +69,5 @@ answer and saves months.
 Revenue and download figures are **estimates**. Use them to compare apps and to judge
 orders of magnitude, never as accounting.
 
-Credits are charged per row. `limit: 15` costs 15 credits, `limit: 100` costs 100.
+Credits are charged per row. A limit is a maximum, not a bill: 15 returned items cost 15 credits.
 Search narrow, then go deep on the few names that matter.

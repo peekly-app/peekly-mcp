@@ -3,14 +3,14 @@ name: ad-intelligence
 description: Read a competitor's paid acquisition from the creatives they actually run, using Peekly's ad library. Use when someone asks how an app gets users, what ads work in a niche, or what to test in their own campaigns.
 ---
 
+Use the Peekly MCP at `https://peekly.app/api/v1/mcp`. Read `tools/list` before using
+the examples: respect its current parameter schema and cost. Keep calls bounded, read `_credits`, and stop on an access or quota refusal.
+
 # Reading the ads that are still running
 
-Nobody keeps paying to run an ad that loses money. **How long a creative has been
-live is the closest thing to a public performance metric** that exists in paid
-acquisition, and it costs nothing to read.
-
-An ad running for two hundred days is an ad that pays for itself. An ad live for four
-days is an experiment, and you have no idea yet whether it worked.
+How long a creative has been live is an observable longevity signal, not proof of
+profitability, spend or conversion. A long-running ad is worth inspecting, but its
+results remain unknown unless the response supplies a measured metric.
 
 ## Work in this order
 
@@ -45,7 +45,7 @@ something and stopped touching it. The video-versus-image mix tells you which fo
 their money is on.
 
 Sort by how long each has been live. The oldest survivors are their control. Everything
-newer is them trying to beat it — and what they are trying tells you what they think
+newer is them trying to beat it, and what they are trying tells you what they think
 matters.
 
 **4. Cross-check against the paywall.**

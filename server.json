@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
   "name": "app.peekly/peekly",
-  "description": "Mobile app intelligence: estimated revenue and downloads, store charts, ad creatives, paywall screens and App Store keyword difficulty.",
-  "version": "1.0.0",
+  "description": "Mobile app revenue, downloads, charts, ads, paywalls, onboardings, creators and keywords.",
+  "version": "1.1.0",
   "websiteUrl": "https://peekly.app",
   "repository": {
     "url": "https://github.com/peekly-app/peekly-mcp",

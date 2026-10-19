@@ -3,6 +3,9 @@ name: launch-window
 description: Read how apps in a category actually break through, so a launch is planned against evidence rather than hope. Use when someone asks when to launch, what a good first month looks like, or why their launch stalled.
 ---
 
+Use the Peekly MCP at `https://peekly.app/api/v1/mcp`. Read `tools/list` before using
+the examples: respect its current parameter schema and cost. Keep calls bounded, read `_credits`, and stop on an access or quota refusal.
+
 # What a real breakthrough looks like
 
 Almost every launch plan is built on a story someone read once. This skill replaces the
@@ -27,7 +30,7 @@ market, often years ago.
 **2. Read their climb, day by day.**
 
 ```
-get_app_chart_history(app_id: "<id>", country: "us", chart: "grossing", days: 180)
+get_app_rankings(app_id: "<id>", country: "us", chart: "grossing", days: 180)
 ```
 
 Pass a country and a chart, always. Then look for the shape:

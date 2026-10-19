@@ -3,6 +3,9 @@ name: competitor-watch
 description: Report what actually changed across a set of competitors since last time, instead of describing them again. Use for a weekly or monthly check-in on apps someone already knows.
 ---
 
+Use the Peekly MCP at `https://peekly.app/api/v1/mcp`. Read `tools/list` before using
+the examples: respect its current parameter schema and cost. Keep calls bounded, read `_credits`, and stop on an access or quota refusal.
+
 # Reporting the change, not the state
 
 A competitor report that describes an app is useless the second time you read it: nothing
@@ -17,7 +20,7 @@ and stop. A short honest report beats a long one padded with last week's facts.
 **1. Movement in the charts.**
 
 ```
-get_app_chart_history(app_id: "<id>", country: "us", chart: "grossing", days: 30)
+get_app_rankings(app_id: "<id>", country: "us", chart: "grossing", days: 30)
 ```
 
 Always pass a country and a chart. Without them you get every country and category at once,

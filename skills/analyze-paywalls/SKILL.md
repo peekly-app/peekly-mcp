@@ -3,6 +3,9 @@ name: analyze-paywalls
 description: Design pricing and paywall screens from what already converts, using Peekly's captured paywall library. Use when someone asks how to charge, what to put on a paywall, what to price, or how a competitor monetises.
 ---
 
+Use the Peekly MCP at `https://peekly.app/api/v1/mcp`. Read `tools/list` before using
+the examples: respect its current parameter schema and cost. Keep calls bounded, read `_credits`, and stop on an access or quota refusal.
+
 # Reading the paywalls that already convert
 
 A paywall is the only screen in an app whose job is to take money. The ones belonging

@@ -3,6 +3,9 @@ name: pricing-from-paywalls
 description: Set a price from what the niche actually charges, using captured paywall screens and revenue estimates. Use when someone asks what to charge, whether their price is too low, or how to structure their plans.
 ---
 
+Use the Peekly MCP at `https://peekly.app/api/v1/mcp`. Read `tools/list` before using
+the examples: respect its current parameter schema and cost. Keep calls bounded, read `_credits`, and stop on an access or quota refusal.
+
 # Pricing from what people already pay
 
 Pricing advice is usually a framework. This is not a framework: it is reading the prices

@@ -3,6 +3,9 @@ name: niche-verdict
 description: Decide go or no-go on a niche, and say it plainly. Use when someone asks whether they should build in a market, whether it is too crowded, or whether an idea is worth the next three months.
 ---
 
+Use the Peekly MCP at `https://peekly.app/api/v1/mcp`. Read `tools/list` before using
+the examples: respect its current parameter schema and cost. Keep calls bounded, read `_credits`, and stop on an access or quota refusal.
+
 # Giving a verdict, not a dashboard
 
 Most market research ends with "here are the numbers, you decide". That is the easy half.
@@ -31,7 +34,7 @@ where a seventh fits.
 
 **3. Did anyone get in recently?**
 
-Look at `releasedAt` across the results, and run `get_app_chart_history` on the youngest
+Look at `releasedAt` across the results, and run `get_app_rankings` on the youngest
 that earns real money. An app under eighteen months old already making money is the
 strongest signal in this whole exercise: it proves the door is still open. No recent
 entrant, and you are looking at a closed market whatever the revenue says.

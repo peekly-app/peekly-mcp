@@ -3,6 +3,9 @@ name: keyword-research
 description: Pick App Store keywords you can realistically rank for, using Peekly's popularity and difficulty scores. Use when someone asks what keywords to target, how to write their app title and subtitle, or why they are not being found.
 ---
 
+Use the Peekly MCP at `https://peekly.app/api/v1/mcp`. Read `tools/list` before using
+the examples: respect its current parameter schema and cost. Keep calls bounded, read `_credits`, and stop on an access or quota refusal.
+
 # Choosing keywords you can actually win
 
 Two numbers decide everything. **Popularity** is how many people search a term.
@@ -52,7 +55,7 @@ says.
 
 The title carries the strongest weight, then the subtitle, then the keyword field.
 Put the single most valuable winnable term in the title, next two in the subtitle,
-and never repeat a word across the three — repetition wastes a slot without adding
+and never repeat a word across the three; repetition wastes a slot without adding
 weight.
 
 ## What to report
@@ -64,9 +67,8 @@ Say clearly which terms to give up on, and why. That is often the most useful pa
 
 ## Watch out
 
-`get_keyword_difficulty` costs **10 credits per keyword**, more than any other tool,
-because that data is bought from an external provider. Think before running twenty
-terms: pick candidates first, then measure.
+`get_keyword_difficulty` costs **10 credits per keyword**, more than any other tool, and
+reads keywords Peekly already measures. Pick candidates first, then measure.
 
 Scores describe the App Store. Google Play ranks on different signals and these
 numbers do not transfer.
