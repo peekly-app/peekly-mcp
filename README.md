@@ -55,10 +55,11 @@ An active Peekly subscription is required. [Start here](https://peekly.app/prici
 
 ## What you see
 
-In clients that support MCP Apps (Claude, ChatGPT), answers come with **cards**: an app
-profile with its screenshots and revenue, charts, rankings, ad creatives, paywall and
-onboarding screens, videos, creators and studios. Other clients receive the same data
-as text.
+In clients that support MCP Apps (Claude, ChatGPT), the final answer comes with
+**cards** for exactly what it presents: an app profile with its screenshots and revenue,
+charts, rankings, ad creatives, paywall and onboarding screens, videos, creators and
+studios. The research steps before it stay quiet, so you get one clean set of cards,
+not a card for every search. Other clients receive the same data as text.
 
 Paywall screens, onboarding screens and video thumbnails are also attached as **real
 images**, so the assistant can read what is on them: the price, the promise, the
@@ -67,7 +68,7 @@ pricing screen changed between 2024 and 2026".
 
 ## Tools
 
-47 tools. They read Peekly data and never change anything in your account. One
+48 tools. They read Peekly data and never change anything in your account. One
 exception: give `get_app` a store link for an app Peekly does not track yet, and it
 returns the public store profile and registers the app for analysis.
 
@@ -76,13 +77,13 @@ returns the public store profile and registers the app for analysis.
 | Tool | What it answers | Cost |
 |---|---|---|
 | `search_apps` | Search and filter apps by niche, revenue, downloads, rating and marketing signals | 1 credit / app |
-| `get_app` | The full profile of one app, even one Peekly doesn't track yet, from its store link | 1 credit |
+| `get_app` | The full profile of one app, even one Peekly doesn't track yet, from its store link | 1 credit, +1 / public review |
 | `get_app_metrics` | Its key figures, records and how it ranks against its category | 1 credit |
-| `get_app_history` | Revenue, downloads, reviews and rank, day by day | 1 credit / day |
+| `get_app_history` | Revenue, downloads, reviews and rank, day by day | 1 credit / observation |
 | `get_app_events` | Updates, price changes and other events for the app | 1 credit / event |
-| `get_app_rankings` | Its position day by day, per country and per chart | 1 credit / day |
+| `get_app_rankings` | Its position day by day, per country and per chart | 1 credit / observation |
 | `list_rankings` | Today's Top Free, Top Paid and Top Grossing, per country and category | 1 credit / app |
-| `compare_apps` | Up to three apps side by side, curves included | 1 credit / point |
+| `compare_apps` | Up to three apps side by side, curves included | 1 credit / observation |
 | `get_similar_apps` | The apps competing on the same ground | 1 credit / app |
 | `get_app_reviews` | Recent store reviews, filterable by stars and country | 1 credit / review |
 
@@ -152,9 +153,15 @@ returns the public store profile and registers the app for analysis.
 | `list_tracked_apps` | The apps you track | 1 credit / app |
 | `get_tracker_events` | What changed on the apps you track | 1 credit / event |
 | `list_favorite_folders` | Your favorite folders | 1 credit / folder |
-| `list_favorites` | Your favorites: apps, ads, paywalls, videos, keywords | 1 credit / favorite |
+| `list_favorites` | Your favorites: apps, ads, paywalls, videos, keywords, onboarding screens | 1 credit / favorite |
 | `get_notifications` | Your latest notifications | 1 credit / notification |
 | `get_notification_preferences` | Your notification settings | 1 credit / setting |
+
+### Display
+
+| Tool | What it answers | Cost |
+|---|---|---|
+| `show_results` | Shows the cards for the apps, ads, paywalls, onboardings, videos, creators, studios and keywords in the final answer, up to 24 | 1 credit / item shown |
 
 ### Reference
 
